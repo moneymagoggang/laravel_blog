@@ -1,0 +1,48 @@
+@import "bootstrap";
+
+.img {
+    width: 399px;
+    height: 200px;
+}
+.pagination{
+    margin-top: 20px;
+    justify-content: center;
+}
+.post {
+    width: 401px;
+    height: 275px;
+    transition: 0.5s;
+}
+.tag{
+    height: 24px;
+
+    background-color: #0d6efd;
+}
+
+.post:hover{
+    //border: #0a53be 1px solid;
+    scale: 1.03;
+}
+.cont-post {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 9999;
+    .spinner-border {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+
+
