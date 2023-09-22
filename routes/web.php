@@ -18,13 +18,25 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
+require __DIR__ . '/auth.php';
+
 Route::get('/', [\App\Http\Controllers\PostController::class,'index'])->name('post.index');
+Route::get('/', [\App\Http\Controllers\PostController::class,'index'])->name('home.index');
 
 Auth::routes();
 
 
 
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::prefix('posts/')
+    ->name('post.')
+    ->group(function () {
+        Route::get('/create', [\App\Http\Controllers\PostController::class, 'create'])->name('create');
+        Route::post('', [\App\Http\Controllers\PostController::class, 'store'])->name('store');
+        Route::get('/{post}/view', [\App\Http\Controllers\PostController::class, 'show'])->name('.how');
+    });
 
 Route::get('/posts/create', [\App\Http\Controllers\PostController::class, 'create'])->name('post.create');
 Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store'])->name('post.store');

@@ -1,0 +1,19 @@
+.form-control {
+    &:focus {
+        border-color: var(--primary) !important;
+    }
+}
+.input-group:not(.bootstrap-touchspin):focus-within .form-control, .input-group:not(.bootstrap-touchspin):focus-within .input-group-text {
+    border-color: var(--primary) !important;
+    box-shadow: none;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: var(--primary) !important;
+    background-color: var(--primary) !important;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before, .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+    box-shadow: 0 2px 4px 0 rgb(59 149 148 / 40%) !important;
+}

@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import pathModule from 'path';
+let resourcePath = 'resources/assets/';
 
 export default defineConfig({
     server: {
@@ -13,7 +14,9 @@ export default defineConfig({
         laravel({
             input: [
                 // 'resources/sass/app.scss',
-                'resources/js/app.js'
+                resourcePath + 'js/app.js',
+                resourcePath + 'js/app-admin.js',
+                resourcePath + 'js/admin/dashboard.js',
             ],
             refresh: true,
         }),

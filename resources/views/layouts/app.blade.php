@@ -12,9 +12,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+{{--resources/assets/images/logo/logo-with-title.svg.--}}
     <!-- Scripts -->
-    @vite([ 'resources/js/app.js'])
+    @vite([ 'resources/assets/js/app.js'])
 </head>
 <body>
 <div id="preloader" class="d-flex justify-content-center align-items-center">

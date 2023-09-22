@@ -1,0 +1,29 @@
+.dark-layout {
+    a {
+        color: var(--primary) !important;
+        &:hover {
+            color: var(--primary-active) !important;
+        }
+    }
+}
+
+a {
+    color: var(--primary) !important;
+    &:hover {
+        color: var(--primary-active) !important;
+    }
+}
+
+.header-navbar .navbar-container ul.navbar-nav li i.ficon:hover, .header-navbar .navbar-container ul.navbar-nav li svg.ficon:hover {
+    color: var(--primary) !important;
+}
+
+.header-navbar .navbar-nav .header-setting .feather:hover {
+    color: var(--primary) !important;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    color: var(--primary) !important;
+    text-decoration: none;
+    background-color: var(--primary-shadow) !important;
+}
