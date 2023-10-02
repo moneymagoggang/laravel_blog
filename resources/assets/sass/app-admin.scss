@@ -1,0 +1,56 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+@import 'admin/variables';
+
+body { background-color:red}
+
+.header-navbar {
+    .navbar-nav {
+        .header-setting {
+            .feather {
+                width: 1.5rem;
+                height: 1.5rem;
+
+                &:hover {
+                    color: #7367f0;
+                }
+            }
+        }
+    }
+}
+
+.main-menu .navbar-header .navbar-brand .brand-text {
+    color: #93BCB6 !important;
+}
+
+.dataTables_wrapper {
+    .dataTables_length, .dataTables_info {
+        padding-left: 1.5rem;
+    }
+
+    .dataTables_filter, .dataTables_paginate {
+        padding-right: 1.5rem;
+    }
+}
+
+.small-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.cursor-zoom-in {
+    cursor: zoom-in;
+}
+
+.ui-datepicker-calendar {
+    display: none;
+}
+
+.position-popover-absolute {
+    position: absolute;
+    top: -13px;
+    right: -13px;;
+}

@@ -1,0 +1,28 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "axios": "^1.1.2",
+        "laravel-vite-plugin": "^0.8.0",
+        "sass": "^1.67.0",
+        "vite": "^4.4.9"
+    },
+    "dependencies": {
+        "@popperjs/core": "^2.11.8",
+        "bootstrap": "^5",
+        "jquery": "^3.7.1",
+        "jquery-mask-plugin": "^1.14.16",
+        "jquery-ui": "^1.13.2",
+        "jquery-validation": "^1.19.5",
+        "mariadb": "^3.2.1",
+        "moment": "^2.29.4",
+        "quill": "^1.3.6",
+        "select2": "^4.1.0-rc.0",
+        "sweetalert2": "^11.7.28",
+        "toastr": "^2.1.4"
+    }
+}

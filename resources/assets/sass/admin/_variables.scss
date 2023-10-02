@@ -1,0 +1,10 @@
+:root {
+    --primary: #93BCB6;
+    --primary-active: #90d7d0;
+    --primary-shadow: rgb(147 188 182 / 12%);
+}
+
+@import 'ui-kit/form';
+@import 'ui-kit/text';
+@import 'ui-kit/datatable';
+

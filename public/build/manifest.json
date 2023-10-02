@@ -1,0 +1,48 @@
+{
+  "_jquery-024ef907.js": {
+    "file": "assets/jquery-024ef907.js"
+  },
+  "resources/assets/images/logo/logo-small.svg": {
+    "file": "assets/logo-small-90de82d1.svg",
+    "src": "resources/assets/images/logo/logo-with-title.svg"
+  },
+  "resources/assets/images/logo/logo-with-title.svg": {
+    "file": "assets/logo-small-90de82d1.svg",
+    "src": "resources/assets/images/logo/logo-with-title.svg"
+  },
+  "resources/assets/js/admin/dashboard.js": {
+    "file": "assets/dashboard-4ed993c7.js",
+    "isEntry": true,
+    "src": "resources/assets/js/admin/dashboard.js"
+  },
+  "resources/assets/js/app-admin.css": {
+    "file": "assets/app-admin-5197bd6d.css",
+    "src": "resources/assets/js/app-admin.css"
+  },
+  "resources/assets/js/app-admin.js": {
+    "css": [
+      "assets/app-admin-5197bd6d.css"
+    ],
+    "file": "assets/app-admin-1374e24a.js",
+    "imports": [
+      "_jquery-024ef907.js"
+    ],
+    "isEntry": true,
+    "src": "resources/assets/js/app-admin.js"
+  },
+  "resources/assets/js/app.css": {
+    "file": "assets/app-cbb329af.css",
+    "src": "resources/assets/js/app.css"
+  },
+  "resources/assets/js/app.js": {
+    "css": [
+      "assets/app-cbb329af.css"
+    ],
+    "file": "assets/app-8ac5ccf3.js",
+    "imports": [
+      "_jquery-024ef907.js"
+    ],
+    "isEntry": true,
+    "src": "resources/assets/js/app.js"
+  }
+}
