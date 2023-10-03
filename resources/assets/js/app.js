@@ -39,7 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
+$('.reply-button').click(function(e) {
+    e.preventDefault();
+    $(this).closest('.card-body').find('.reply-form').toggle();
+    $('.reply-button').addClass('d-none');
+});
 
 
 document.addEventListener("DOMContentLoaded", function () {

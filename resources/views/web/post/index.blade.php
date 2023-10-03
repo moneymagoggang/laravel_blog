@@ -10,9 +10,10 @@
     <a class="btn w-100 btn-primary w-full text-decoration-none text-white" href="{{ route('register') }}">Register to Create New Post</a>
 @endif
 <div class="mt-2 ">
+    <a class="text-decoration-none" href="{{ route('post.index') }}"><span class="tag bg-black text-white inline-flex items-center px-3 py-0.5 rounded-5 text-xs fw-bold leading-5 font-display mr-2 capitalize bg-brand-500 ">All</span></a>
     <a class="text-decoration-none" href="{{ route('posts.by.tag', 'Developer Tools') }}"><span class="tag bg-success text-white inline-flex items-center px-3 py-0.5 rounded-5 text-xs fw-bold leading-5 font-display mr-2 capitalize bg-brand-500 ">Developer Tools</span></a>
     <a class="text-decoration-none" href="{{ route('posts.by.tag', 'News') }}"><span class="tag bg-danger text-white inline-flex items-center px-3 py-0.5 rounded-5 text-xs fw-bold leading-5 font-display mr-2 capitalize bg-brand-500 ">News</span></a>
-    <a class="text-decoration-none" href="{{ route('posts.by.tag', 'Others') }}"><span class="tag bg-black text-white inline-flex items-center px-3 py-0.5 rounded-5 text-xs fw-bold leading-5 font-display mr-2 capitalize bg-brand-500 ql-bg-orange">Others</span></a>
+    <a class="text-decoration-none" href="{{ route('posts.by.tag', 'Others') }}"><span class="tag bg-warning text-white inline-flex items-center px-3 py-0.5 rounded-5 text-xs fw-bold leading-5 font-display mr-2 capitalize bg-brand-500 ql-bg-orange">Others</span></a>
 </div>
 <div class="row cont-post mx-auto w-100">
 
@@ -28,7 +29,8 @@
                             class="img rounded w-full mb-4 rounded-lg shadow-none transition transition-shadow duration-500 ease-in-out group-hover:shadow-lg lazyloaded "
                             src="{{ asset('storage/' . $post->image) }}" alt="Картинка поста">
                     @endif
-                        <span class="tag inline-flex items-center px-3 py-0.5 rounded-5 text-xs fw-bold leading-5 text-white font-display mr-2 capitalize bg-brand-500 ">{{ $post->tag->name }}</span>
+
+                        <span class="{{ $post->tag_id == '1' ? 'bg-success' : ($post->tag_id == '2' ? 'bg-danger' : ($post->tag_id == '3' ? 'bg-warning' : '')) }} inline-flex items-center px-3 py-0.5 rounded-5 text-xs fw-bold leading-5 text-white font-display mr-2 capitalize bg-brand-500 ">{{ $post->tag->name }}</span>
                         <span class="fw-light text-black">{{ \Carbon\Carbon::parse($post->created_at)->format('F jS, Y') }}</span>
                         <h4 class="card-title p-1 text-black text-decoration-underline">{{ $post->title }}</h4>
 {{--                    <h6 class="card-subtitle text-muted">Support card subtitle</h6>--}}
@@ -41,6 +43,7 @@
         </a>
 
     @endforeach
+
 
             <div>
             {{ $posts->links('pagination::bootstrap-4') }}

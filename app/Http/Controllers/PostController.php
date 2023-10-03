@@ -25,23 +25,40 @@ class PostController extends Controller
     public function show(Post $post)
     {
 //        \session()->forget('count_post_see');
-        if(session()->has('count_post_see')){
-           $countPostSee = session()->get('count_post_see');
-            session()->put('count_post_see',$countPostSee++);
+        $user = auth()->user();
+
+        if ($user && $user->subscription && $user->subscription->ends_at > now()) {
+            // У пользователя есть активная подписка, разрешить просмотр поста.
+            $freeSeePost = true;
+            $randomPosts = Post::query()->where('id', '!=', $post->id)->inRandomOrder()->limit(3)->get();
+
+            return view('web.post.show', compact('post', 'randomPosts', 'freeSeePost'));
+
         } else {
-            session()->put('count_post_see', 1);
+            if(session()->has('count_post_see')){
+                $countPostSee = session()->get('count_post_see');
+                session()->put('count_post_see',$countPostSee + 1);
+            } else {
+                session()->put('count_post_see', 1);
+            }
+
+            $freeSeePost = true;
+            if(\session()->get('count_post_see') > 2){
+                $freeSeePost = false;
+            }
+            $user = auth()->user();
+
+            $randomPosts = Post::query()->where('id', '!=', $post->id)->inRandomOrder()->limit(3)->get();
+
+            if($user){
+                return view('web.post.show', compact('post', 'randomPosts', 'freeSeePost'));
+            } else {
+                return to_route('register')->with('message', 'You need to register.');
+            }
         }
-        // add post id check
-        $freeSeePost = true;
-        if(\session()->get('count_post_see') > 2){
-            $freeSeePost = false;
-        }
 
 
-        $randomPosts = Post::query()->where('id', '!=', $post->id)->inRandomOrder()->limit(3)->get();
 
-
-        return view('web.post.show', compact('post', 'randomPosts'));
     }
 
     public function create()

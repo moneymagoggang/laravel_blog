@@ -68,15 +68,24 @@
                                 </a>
 
                                 <div class="dropdown-menu "  aria-labelledby="navbarDropdown">
+
+                                    <a class="dropdown-item dropdown-toggle " role="button" data-toggle="dropdown" id="" href="{{ route('my-posts') }}">
+                                        My Posts
+                                    </a>
+                                    @if(auth()->user()->subscription && auth()->user()->subscription->status === 'active')
+                                        <a class="bg-danger dropdown-item dropdown-toggle " role="button" data-toggle="dropdown" id="" href="{{ route('abort') }}">
+                                            Cancel Subscription
+                                        </a>
+                                    @else
+                                        <a class="bg-success dropdown-item dropdown-toggle " role="button" data-toggle="dropdown" id="" href="{{ route('plans') }}">
+                                            Buy Subscription
+                                        </a>
+                                    @endif
                                     <a class="dropdown-item dropdown-toggle " role="button" data-toggle="dropdown" id="logout" href="{{ route('logout'), url('/home') }}"
-                                        onclick="event.preventDefault();
+                                       onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item dropdown-toggle " role="button" data-toggle="dropdown" id="logout" href="{{ route('my-posts') }}">
-                                        My Posts
-                                    </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>

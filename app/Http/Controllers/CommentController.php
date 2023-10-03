@@ -19,13 +19,14 @@ class CommentController extends Controller
         $post = $request->input('post_id');
         $comments = Comment::create($validatedData);
 
-        return to_route('post.show', $comments);
+        return to_route('post.show', compact('comments', 'post'));
 
 
     }
-    public function create()
+    public function destroy(Comment $comment)
     {
-
+        $comment->delete();
+        return redirect()->back();
     }
     public function index()
     {

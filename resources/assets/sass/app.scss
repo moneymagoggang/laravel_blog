@@ -13,11 +13,7 @@
     height: 275px;
     transition: 0.5s;
 }
-.tag{
-    height: 24px;
 
-    background-color: #0d6efd;
-}
 
 .post:hover{
     //border: #0a53be 1px solid;
@@ -28,7 +24,9 @@
     justify-content: space-between;
 }
 
-
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.7); /* Затемнение */
+}
 
 #preloader {
     position: fixed;
@@ -42,6 +40,12 @@
         width: 3rem;
         height: 3rem;
     }
+}
+
+.comment-tree {
+    margin-left: 20px;
+    border-left: 2px solid #ccc;
+    padding-left: 10px;
 }
 
 

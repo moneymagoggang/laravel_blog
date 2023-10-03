@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/auth.php';
 
 Route::get('/', [\App\Http\Controllers\PostController::class,'index'])->name('post.index');
-Route::get('/', [\App\Http\Controllers\PostController::class,'index'])->name('home.index');
+//Route::get('/', [\App\Http\Controllers\PostController::class,'index'])->name('home.index');
 
 Auth::routes();
 
@@ -35,12 +35,18 @@ Route::prefix('posts/')
     ->group(function () {
         Route::get('/create', [\App\Http\Controllers\PostController::class, 'create'])->name('create');
         Route::post('', [\App\Http\Controllers\PostController::class, 'store'])->name('store');
-        Route::get('/{post}/view', [\App\Http\Controllers\PostController::class, 'show'])->name('.how');
+        Route::get('/{post}/view', [\App\Http\Controllers\PostController::class, 'show'])->name('show');
     });
 
-Route::get('/posts/create', [\App\Http\Controllers\PostController::class, 'create'])->name('post.create');
-Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store'])->name('post.store');
-Route::get('/posts/{post}/view', [\App\Http\Controllers\PostController::class, 'show'])->name('post.show');
+//Route::get('/posts/create', [\App\Http\Controllers\PostController::class, 'create'])->name('post.create');
+//Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store'])->name('post.store');
+//Route::get('/posts/{post}/view', [\App\Http\Controllers\PostController::class, 'show'])->name('post.show');
+
+Route::get('/plans', [\App\Http\Controllers\Stripe\StripeController::class, 'index'])->name('plans');
+Route::get('/plans/abort', [\App\Http\Controllers\Stripe\StripeController::class, 'abort'])->name('abort');
+Route::get('/plans/success', [\App\Http\Controllers\Stripe\StripeController::class, 'success'])->name('success');
+Route::get('/plans/cancel', [\App\Http\Controllers\Stripe\StripeController::class, 'cancel'])->name('cancel');
+Route::get('/plans/checkout', [\App\Http\Controllers\Stripe\StripeController::class, 'checkout'])->name('checkout');
 
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('post.search');
 
@@ -48,6 +54,8 @@ Route::delete('/posts/{post}', [\App\Http\Controllers\PostController::class, 'de
 
 
 Route::post('/posts/comments', [\App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
+Route::delete('/comments/{comment}', [\App\Http\Controllers\CommentController::class, 'destroy'])->name('comments.destroy');
+
 //Route::get('/posts/{postId}/comments', [\App\Http\Controllers\CommentController::class, 'show'])->name('comments.show');
 
 

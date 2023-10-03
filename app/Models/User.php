@@ -21,6 +21,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class);
+    }
     protected $fillable = [
         'name',
         'email',

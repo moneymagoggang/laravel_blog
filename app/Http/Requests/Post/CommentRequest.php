@@ -26,6 +26,7 @@ class CommentRequest extends FormRequest
             //
 
             'text' => ['required','string','max:255'],
+            'parent_id' => 'nullable|exists:comments,id',
         ];
     }
 }
