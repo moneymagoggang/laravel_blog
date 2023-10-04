@@ -55,3 +55,4 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 console.log('123');
+import './vue.js'

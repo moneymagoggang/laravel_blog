@@ -1,27 +1,34 @@
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import laravel from 'laravel-vite-plugin';
-import pathModule from 'path';
-let resourcePath = 'resources/assets/';
+import vue from '@vitejs/plugin-vue'
+import pathModule from 'path'
+
+const path = 'resources/assets/';
 
 export default defineConfig({
-    server: {
-        host: '0.0.0.0',
-        hmr: {
-            host: 'localhost'
-        }
-    },
     plugins: [
         laravel({
             input: [
-                // 'resources/sass/app.scss',
-                resourcePath + 'js/app.js',
-                resourcePath + 'js/app-admin.js',
-                resourcePath + 'js/admin/dashboard.js',
+                path + 'js/app.js',
             ],
             refresh: true,
         }),
-
+        vue({
+            template: {
+                transformAssetUrls: {
+                    base: null,
+                    includeAbsolute: false,
+                },
+                compilerOptions: {
+                    isCustomElement: (tag) => tag.includes('-')
+                },
+            },
+        }),
     ],
+    build: {
+
+
+    },
     resolve: {
         alias: {
             '~bootstrap': pathModule.resolve(__dirname, 'node_modules/bootstrap'),

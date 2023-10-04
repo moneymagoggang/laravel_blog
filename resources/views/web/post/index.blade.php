@@ -5,7 +5,7 @@
 
 <h1>Posts</h1>
 @if(auth()->check())
-    <a class="btn w-100 btn-primary w-full  text-decoration-none text-white" href="{{ route('post.create') }}">Create Post</a>
+    <a class="btn w-100 btn-primary w-full  text-decoration-none text-white" href="{{ route('buyCreate') }}">Create Post</a>
 @else
     <a class="btn w-100 btn-primary w-full text-decoration-none text-white" href="{{ route('register') }}">Register to Create New Post</a>
 @endif
@@ -16,6 +16,28 @@
     <a class="text-decoration-none" href="{{ route('posts.by.tag', 'Others') }}"><span class="tag bg-warning text-white inline-flex items-center px-3 py-0.5 rounded-5 text-xs fw-bold leading-5 font-display mr-2 capitalize bg-brand-500 ql-bg-orange">Others</span></a>
 </div>
 <div class="row cont-post mx-auto w-100">
+
+{{--    TEST--}}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td colspan="5" class='text-center'>List empty</td>
+        </tr>
+
+        </tbody>
+    </table>
+{{--    TEST   --}}
+
+
+
 
     @foreach($posts as $post)
 {{--                        <div class="col-md-4">--}}

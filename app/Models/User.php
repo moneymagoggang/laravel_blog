@@ -25,6 +25,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Subscription::class);
     }
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
     protected $fillable = [
         'name',
         'email',

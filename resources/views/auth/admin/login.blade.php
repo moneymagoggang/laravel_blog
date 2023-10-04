@@ -5,7 +5,7 @@
         <div class="auth-inner py-2">
             <div class="card mb-0">
                 <div class="card-body">
-                    <a href="{{ route('home.index') }}" class="brand-logo">
+                    <a href="{{ route('post.index') }}" class="brand-logo">
                         <img src="{{ Vite::image('logo/logo-with-title.svg') }}" alt="{{ config('app.name', 'Laravel') }}">
                     </a>
 

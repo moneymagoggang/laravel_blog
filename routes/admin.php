@@ -17,3 +17,10 @@ Route::prefix('dashboard/')
     ->group(function () {
         Route::get('', [DashboardController::class, 'index'])->name('index');
     });
+Route::prefix('posts/')
+    ->name('posts.')
+    ->group(function () {
+        Route::get('', [\App\Http\Controllers\Admin\PostController::class, 'index'])->name('index');
+    });
+
+

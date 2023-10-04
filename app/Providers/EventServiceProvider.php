@@ -2,6 +2,13 @@
 
 namespace App\Providers;
 
+use App\Events\BookingEvent;
+use App\Listeners\CreateTransactionListener;
+use App\Listeners\SendNotificationListener;
+use App\Listeners\UpdateBalanceSellerListener;
+use App\Models\Post;
+use App\Observers\PostObserver;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +25,11 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        BookingEvent::class => [
+            CreateTransactionListener::class,
+            SendNotificationListener::class,
+            UpdateBalanceSellerListener::class,
+        ]
     ];
 
     /**
@@ -25,7 +37,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Post::observe(PostObserver::class);
+
     }
 
     /**

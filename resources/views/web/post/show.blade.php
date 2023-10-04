@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(session('message'))
+        <div class="alert alert-info">
+            {{ session('message') }}
+        </div>
+    @endif
     @if (!$freeSeePost)
 
         <div class="modal fade show d-block" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalLabel" aria-hidden="true">
@@ -15,6 +20,7 @@
                     <div class="modal-body">
                         <p class="text-center display-5">You must buy subscription!</p>
                         <a class="btn btn-success d-flex justify-content-center" href="{{ route('plans') }}">Buy Subscription</a>
+
                     </div>
                 </div>
             </div>
@@ -50,6 +56,29 @@
         <textarea name="text" id="text" class="form-control"></textarea>
         <button class="btn btn-primary mt-1" type="submit">Send</button>
     </form>
+    </div>
+
+    <div class="container d-flex justify-content-end">
+        @if(auth()->check())
+
+
+            @if(auth()->user()->ratings->where('post_id', $post->id)->first())
+                <p>You rated this post: <strong>{{ auth()->user()->ratings->where('post_id', $post->id)->first()->rating }}</strong></p>
+            @else
+                <form method="POST" action="{{ route('post.rate', $post) }}">
+                    @csrf
+                    <label for="rating">Rate this post:</label>
+                    <select name="rating" id="rating">
+                        <option value="1">1 (Poor)</option>
+                        <option value="2">2 (Fair)</option>
+                        <option value="3">3 (Good)</option>
+                        <option value="4">4 (Very Good)</option>
+                        <option value="5">5 (Excellent)</option>
+                    </select>
+                    <button type="submit">Submit Rating</button>
+                </form>
+            @endif
+        @endif
     </div>
     <div class="random-posts">
         <h1 class="mx-4 mt-5">

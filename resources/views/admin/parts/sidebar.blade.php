@@ -28,11 +28,11 @@
                 <span data-i18n="Lists &amp; Tables">Lists &amp; Tables</span>
                 <i data-feather="more-horizontal"></i>
             </li>
-{{--            <li class="nav-item {{ Route::currentRouteName() == 'admin.users.index' ? 'active' : '' }}">--}}
-{{--                <a class="d-flex align-items-center" href="{{ route('admin.users.index') }}">--}}
-{{--                    <i data-feather="home"></i>--}}
-{{--                    <span class="menu-title text-truncate" data-i18n="Listings">Users</span></a>--}}
-{{--            </li>--}}
+            <li class="nav-item {{ Route::currentRouteName() == 'admin.posts.index' ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.posts.index') }}">
+                    <i data-feather="home"></i>
+                    <span class="menu-title text-truncate" data-i18n="Listings">Users</span></a>
+            </li>
         </ul>
     </div>
 </div>

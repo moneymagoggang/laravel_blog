@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Stripe;
 
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
+use App\Notifications\PurchaseNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,31 @@ class StripeController extends Controller
     public function index()
     {
         return view('web.checkout.plans');
+    }
+    public function buyCreate(Request $request)
+    {
+        Stripe::setApiKey(config('stripe.sk'));
+
+        $session = \Stripe\Checkout\Session::create([
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => 'USD',
+                        'product_data' => [
+                            'name' => 'create post'
+                        ],
+                        'unit_amount' => 500,
+                    ],
+                    'quantity' => 1,
+                ]
+            ],
+            'mode' => 'payment',
+            'success_url' => route('post.create',),
+            'cancel_url' => route('cancel'),
+        ]);
+        $request->user()->notify(new PurchaseNotification());
+
+        return redirect()->away($session->url);
     }
     public function checkout()
     {

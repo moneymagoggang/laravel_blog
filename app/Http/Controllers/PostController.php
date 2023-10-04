@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Console\Commands\Test\SendNotification;
 use App\Http\Requests\Post\StoreRequest;
+use App\Models\Admin;
 use App\Models\Post;
+use App\Models\Rating;
 use App\Models\Tag;
+use App\Notifications\TestNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use PHPUnit\Util\Test;
 
 
 class PostController extends Controller
@@ -64,6 +71,8 @@ class PostController extends Controller
     public function create()
     {
         $tags = Tag::all();
+        $admin = Admin::all();
+        $admin->notify(new TestNotification());
         return view('web.post.create', compact('tags'));
     }
 
@@ -105,7 +114,29 @@ class PostController extends Controller
         return view('web.post.index', compact('posts'));
     }
 
+    public function rate(Post $post)
+    {
+        $user = auth()->user();
 
+        $validatedData = request()->validate([
+            'rating' => 'required|integer|min:1|max:5',
+        ]);
+
+
+        $rating = new Rating([
+            'rating' => $validatedData['rating'],
+            'user_id' => $user->id,
+        ]);
+        $post->ratings()->save($rating);
+
+
+        $author = $post->user;
+        $author->notify(new TestNotification(Auth::user(), $post));
+
+        return redirect()->back()->with('success', '!!!!!!!!!');
+//        return redirect()->back()->with('message', 'Thank you for rating this post.')->with(Artisan::call('test:send-notification'), compact('post'));
+
+    }
 
 
 //    public function test()

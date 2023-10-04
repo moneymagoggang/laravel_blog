@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +27,15 @@ Route::get('/', [\App\Http\Controllers\PostController::class,'index'])->name('po
 
 Auth::routes();
 
+Route::post('/posts/{post}/rate', [\App\Http\Controllers\PostController::class, 'rate'])->name('post.rate');
+Route::post('/posts/{post}/send', [\App\Console\Commands\Test\SendNotification::class, 'handle'])->name('send.email');
+
+
+Route::get('/posts/{post}/rate', function () {
+//    $user = User::first();
+//    Notification::send($user, new \App\Notifications\TestNotification());
+
+})->name('post.rate');
 
 
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -47,6 +58,7 @@ Route::get('/plans/abort', [\App\Http\Controllers\Stripe\StripeController::class
 Route::get('/plans/success', [\App\Http\Controllers\Stripe\StripeController::class, 'success'])->name('success');
 Route::get('/plans/cancel', [\App\Http\Controllers\Stripe\StripeController::class, 'cancel'])->name('cancel');
 Route::get('/plans/checkout', [\App\Http\Controllers\Stripe\StripeController::class, 'checkout'])->name('checkout');
+Route::get('/plans/buyCreate', [\App\Http\Controllers\Stripe\StripeController::class, 'buyCreate'])->name('buyCreate');
 
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('post.search');
 

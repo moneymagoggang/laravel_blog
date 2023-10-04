@@ -13,6 +13,11 @@
 
             </div>
             <div class="form-group">
+                <label for="title">STATUS</label>
+                <input type="number" name="status" id="title" class="form-control @error('status') is-invalid @enderror" value="{{ $post->status }}">
+
+            </div>
+            <div class="form-group">
                 <label for="content">Content</label>
                 <div id="editor">{{ $post->content }} </div>
                 <textarea name="content" id="content" class="form-control d-none">
