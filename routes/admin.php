@@ -21,6 +21,9 @@ Route::prefix('posts/')
     ->name('posts.')
     ->group(function () {
         Route::get('', [\App\Http\Controllers\Admin\PostController::class, 'index'])->name('index');
+        Route::delete('/{post}', [\App\Http\Controllers\Admin\PostController::class, 'delete'])->name('delete');
+        Route::get('/{post}/confirm', [\App\Http\Controllers\Admin\PostController::class, 'confirmPost'])->name('confirm');
+        Route::get('/{post}/decline', [\App\Http\Controllers\Admin\PostController::class, 'declinePost'])->name('decline');
     });
 
 

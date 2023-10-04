@@ -8,6 +8,7 @@ use App\Models\Admin;
 use App\Models\Post;
 use App\Models\Rating;
 use App\Models\Tag;
+use App\Notifications\AdminReviewNotification;
 use App\Notifications\TestNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -71,8 +72,7 @@ class PostController extends Controller
     public function create()
     {
         $tags = Tag::all();
-        $admin = Admin::all();
-        $admin->notify(new TestNotification());
+
         return view('web.post.create', compact('tags'));
     }
 
@@ -98,10 +98,12 @@ class PostController extends Controller
             $imagePath = $request->file('image')->store('images', 'public');
             $post->image = $imagePath;
         }
+
+        $admin = Admin::first();
+        $admin->notify(new AdminReviewNotification());
         $post->save();
 
-
-        return redirect()->route('post.index')->with('success', 'Post created successfully')->with('post', $post);
+        return redirect()->route('post.index')->with('success', 'You need wait before admin confirm your post and you will see you post here! Good Luck!')->with('post', $post);
 
     }
 

@@ -2,7 +2,10 @@
 
 namespace App\Observers;
 
+use App\Models\Admin;
 use App\Models\Post;
+use App\Notifications\AdminReviewNotification;
+use App\Notifications\SuccessCreateNotification;
 
 class PostObserver
 {
@@ -12,6 +15,10 @@ class PostObserver
     public function created(Post $post): void
     {
         //
+        $user = auth()->user();
+
+        $user->notify(new SuccessCreateNotification());
+
     }
 
     /**
@@ -19,15 +26,7 @@ class PostObserver
      */
     public function updated(Post $post): void
     {
-        if ($post->isDirty('status')) {
-            if ($post->status == 1) {
-                dd('1');
-            } elseif ($post->status == 2) {
-                dd('2');
-            } else {
-                dd('else');
-            }
-        }
+
     }
 
     /**

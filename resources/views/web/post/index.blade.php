@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
+    @if(session('success'))
+        <div class="alert alert-info">
+            {{ session('success') }}
+        </div>
+    @endif
 
 <h1>Posts</h1>
 @if(auth()->check())
@@ -17,30 +21,14 @@
 </div>
 <div class="row cont-post mx-auto w-100">
 
-{{--    TEST--}}
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td colspan="5" class='text-center'>List empty</td>
-        </tr>
 
-        </tbody>
-    </table>
-{{--    TEST   --}}
 
 
 
 
     @foreach($posts as $post)
 {{--                        <div class="col-md-4">--}}
+    @if($post->status == '1')
         <a class="post mb-5 text-decoration-none col-md-4 rounded my-5" href="{{ route('post.show', $post) }}">
 
 
@@ -63,7 +51,7 @@
 
 
         </a>
-
+        @endif
     @endforeach
 
 

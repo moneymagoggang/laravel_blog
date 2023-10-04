@@ -38,7 +38,8 @@ class StripeController extends Controller
             'success_url' => route('post.create',),
             'cancel_url' => route('cancel'),
         ]);
-        $request->user()->notify(new PurchaseNotification());
+
+//        session(['stripe_pay_id' => $session]);
 
         return redirect()->away($session->url);
     }

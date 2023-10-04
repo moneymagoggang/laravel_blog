@@ -25,7 +25,7 @@ window.notify = function (text, type = 'success') {
     });
 }
 
-window.notify("hello world123123123")
+// window.notify("hello world123123123")
 
 window.featherLoad = function () {
     if (feather) {

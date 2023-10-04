@@ -20,7 +20,7 @@
 
 
 <div id="app">
-   <example-component></example-component>
+
 </div>
 
 <div id="preloader" class="d-flex justify-content-center align-items-center">

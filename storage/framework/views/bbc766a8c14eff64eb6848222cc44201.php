@@ -1,5 +1,10 @@
 <?php $__env->startSection('content'); ?>
+    <?php if(session('success')): ?>
+        <div class="alert alert-info">
+            <?php echo e(session('success')); ?>
 
+        </div>
+    <?php endif; ?>
 
 <h1>Posts</h1>
 <?php if(auth()->check()): ?>
@@ -16,29 +21,13 @@
 <div class="row cont-post mx-auto w-100">
 
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td colspan="5" class='text-center'>List empty</td>
-        </tr>
-
-        </tbody>
-    </table>
-
 
 
 
 
     <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
+    <?php if($post->status == '1'): ?>
         <a class="post mb-5 text-decoration-none col-md-4 rounded my-5" href="<?php echo e(route('post.show', $post)); ?>">
 
 
@@ -61,7 +50,7 @@
 
 
         </a>
-
+        <?php endif; ?>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 

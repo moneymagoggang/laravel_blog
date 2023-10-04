@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class PurchaseNotification extends Notification
+class AdminReviewNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -35,9 +35,8 @@ class PurchaseNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('You success bought author permission')
-                    ->line('Now, you can create 1 post! GL!')
-                    ->action('Return to create page', route('post.create'))
+                    ->line('You need to review new post')
+                    ->action('Check post', route('admin.posts.index'))
                     ->line('Thank you for using our blog-application!');
     }
 
