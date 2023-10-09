@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
 
-Route::get('/', [\App\Http\Controllers\PostController::class,'index'])->name('post.index');
+
 //Route::get('/', [\App\Http\Controllers\PostController::class,'index'])->name('home.index');
 
 Auth::routes();
@@ -39,13 +39,14 @@ Route::get('/posts/{post}/rate', function () {
 
 
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/', [\App\Http\Controllers\PostController::class,'index'])->name('post.index');
 
 Route::prefix('posts/')
     ->name('post.')
     ->group(function () {
+
         Route::get('/create', [\App\Http\Controllers\PostController::class, 'create'])->name('create');
-        Route::post('', [\App\Http\Controllers\PostController::class, 'store'])->name('store');
+        Route::post('/store', [\App\Http\Controllers\PostController::class, 'store'])->name('store');
         Route::get('/{post}/view', [\App\Http\Controllers\PostController::class, 'show'])->name('show');
     });
 

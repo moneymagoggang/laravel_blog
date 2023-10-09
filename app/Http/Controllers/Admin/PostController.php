@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use Stripe\Stripe;
 
@@ -38,14 +39,11 @@ class PostController extends Controller
         $post->save();
 
 //        Stripe::setApiKey(config('stripe.sk'));
-//        $stripeSessionId = session('stripe_pay_id');
+//        $stripeSessionId = session('stripe_payment_session');
 //        dd($stripeSessionId);
-//        $session = \Stripe\Checkout\Session::retrieve($stripeSessionId);
-//
-//        $session = \Stripe\Checkout\Session::([
-//
-//        ]);
-//        return redirect()->away($session->url);
+//        $stripeSessionId->paymentIntents->cancel('pi_32AkjQ5H4Bas2eAolX13', []);
+
+
 
 
         return redirect()->back();

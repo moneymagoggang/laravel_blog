@@ -35,11 +35,13 @@ class StripeController extends Controller
                 ]
             ],
             'mode' => 'payment',
-            'success_url' => route('post.create',),
+            'success_url' => route('post.create'),
             'cancel_url' => route('cancel'),
         ]);
 
-//        session(['stripe_pay_id' => $session]);
+        session(['stripe_payment_session' => $session->payment_intent]);
+// need db
+
 
         return redirect()->away($session->url);
     }
